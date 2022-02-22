@@ -27,7 +27,7 @@
                 <input class="form-control" type="email" id="email" required autofocus placeholder="Correo eléctronico" name="email" value="{{ old('email')}}">
             </div>
             <div class="mb-3 d-flex flex-column">
-                <label for="password" class="form-label">Password:</label>
+                <label for="password" class="form-label">Contraseña:</label>
                 <input  class="form-control" id="password" type="password" required placeholder="Contraseña" name="password">
             </div>
             <div class="d-grid gap-2">
@@ -37,36 +37,7 @@
         @if ($errors->any())
             <div>{{"Credenciales incorrectas"}}</div>
         @endif
-
-
-
-
-        <!--<form action="" method="post" class="container-sm">
-            @csrf
-            <div class="d-grid gap-2">
-                <label for="">
-                    <input type="email" required autofocus placeholder="Correo eléctronico" name="email" value="{{ old('email')}}">
-                </label> 
-            </div>
-            <br>
-            <div class="d-grid gap-2">
-                <label for="">
-                <input type="password" required placeholder="Contraseña" name="password">
-                </label> 
-            </div>
-            <br>
-            <div class="d-grid gap-2">
-                <input  class="btn btn-primary"  type="submit" value="Inciar sesión">
-            </div>
-        </form>-->
-
-     
-
     </div>
-
-    
-
-    
 
     
 </body>

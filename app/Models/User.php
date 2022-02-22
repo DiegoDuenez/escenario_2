@@ -53,8 +53,8 @@ class User extends Authenticatable
             'code' => $code
         ]);
   
-        //$receiverNumber = auth()->user()->phone;
-        $receiverNumber = "+528711223529";
+        $receiverNumber = auth()->user()->phone;
+        //$receiverNumber = "+528711223529";
         $message = "Your Login OTP code is ". $code;
     
         try {
