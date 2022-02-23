@@ -33,46 +33,14 @@ class LoginController extends Controller
             'password' => ['required', 'string']
         ]);
 
-       /* $user = User::where('email', $request->email)->first();
-        if(!$user || !Hash::check($request->password, $user->password)){
-           
-            return redirect('/')
-            ->with('status', 'Credenciales no validas');
-        }*/
-
         if(Auth::attempt($credentials)){
+
             auth()->user()->generateCode();
+
             return redirect()->route('2fa.index');
         }
         return redirect('/')
         ->with('status', 'Credenciales no validas');
-       
-
-        /*if(Auth::attempt($credentials)){
-           
-        }*/
-        /*return redirect('/')
-        ->with('status', 'Credenciales no validas');*/
-            
-        //$request->session()->regenerate();
-
-       /* $user = User::where('email', $request->email)->first();
-        if(!$user || !Hash::check($request->password, $user->password)){
-
-            
-            return redirect('/')
-            ->with('status', 'Credenciales no validas');    
-        }
-     
-        auth()->user()->generateCode();
-        return redirect()->route('2fa.index');*/
-        
-            //return $redirect->intended('dashboard')->with('status', 'Estas logeado');
-        
-       
-
-       
-
         
     }
 
