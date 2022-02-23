@@ -35,10 +35,12 @@
             @error('name')<span class="text-danger">{{$message}}</span>@enderror
             <div class="mb-3 mt-3 d-flex flex-column">
                 <label for="phone" class="form-label">Número celular</label>
-                <div class="input-group">
+                <input class="form-control" type="text" id="phone" required autofocus placeholder="Número celular" name="phone" value="+52{{ old('phone')}}" aria-label="password" aria-describedby="basic-addon1">
+
+                <!--<div class="input-group">
                     <span class="input-group-text" id="basic-addon1">+52</span>
-                    <input class="form-control" type="number" id="phone" required autofocus placeholder="Número celular" name="phone" value="{{ old('phone')}}" aria-label="password" aria-describedby="basic-addon1">
-                </div>
+                    <input class="form-control" type="number" id="phone" required autofocus placeholder="Número celular" name="phone" value="+52{{ old('phone')}}" aria-label="password" aria-describedby="basic-addon1">
+                </div>-->
             </div>
             @error('phone')<span class="text-danger">{{$message}}</span>@enderror
             <div class="mb-3 d-flex flex-column">

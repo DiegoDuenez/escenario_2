@@ -31,8 +31,15 @@ class RegistroController extends Controller
         $validation = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|string|unique:users',
-            'phone' => 'required|string|unique:users|',
+            'phone' => 'required|string|unique:users|min:10',
             'password' => 'required|string|min:10'
+        ]
+        , 
+        [
+            'email.unique'=>'Este email ya esta en uso.',
+            'phone.unique'=>'Este número ya está en uso.',
+            'phone.min'=>'El Número tiene que tener al menos 10 dígitos',
+            'password.min'=>'La Contraseña tiene que tener al menos 10 caracteres'
         ]
         );
 
