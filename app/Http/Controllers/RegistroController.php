@@ -25,27 +25,28 @@ class RegistroController extends Controller
 
     public function registro(Request $request, Redirector $redirect)
     {
+
+        //$request->phone = "+52".$request->phone;
+
         $validation = $request->validate([
-            'name' => ['required', 'string'],
-            'email' => ['required', 'email', 'string', 'unique:users'],
-            'phone' => ['required', 'min:10', 'unique:users'],
-            'password' => ['required', 'string', 'min:10']
-        ],
-        [ 
-            'email.unique' => 'Este email ya esta en uso.',
-            'phone.unique'=> 'Este número ya esta en uso.',
-            'phone.min'=> 'Debes ingresar un número valido de 10 dígitos.',
-            'password.min' => 'Debes ingresar una contraseña minima de 10 dígitos.'
-        ]);
+            'name' => 'required|string',
+            'email' => 'required|email|string|unique:users',
+            'phone' => 'required|string|unique:users|',
+            'password' => 'required|string|min:10'
+        ]
+        );
 
         if($validation){
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                'phone' => "+52".$request->phone,
+                'phone' => $request->phone,
                 'password' => Hash::make($request->password),
             ]);
             return $redirect->to('/')->with('status', 'Ahora puedes iniciar sesión');
+        }
+        else{
+           // return $redirect->to('/registro')->with('status', 'Ahora puedes iniciar sesión');
         }
 
     }
