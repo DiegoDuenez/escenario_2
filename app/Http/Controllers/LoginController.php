@@ -34,13 +34,11 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
-
             auth()->user()->generateCode();
-
             return redirect()->route('2fa.index');
         }
         return redirect('/')
-        ->with('status', 'Credenciales no validas');
+        ->with('error', 'Credenciales no validas');
         
     }
 

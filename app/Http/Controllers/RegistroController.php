@@ -30,6 +30,12 @@ class RegistroController extends Controller
             'email' => ['required', 'email', 'string', 'unique:users'],
             'phone' => ['required', 'min:10', 'unique:users'],
             'password' => ['required', 'string', 'min:10']
+        ],
+        [ 
+            'email.unique' => 'Este email ya esta en uso.',
+            'phone.unique'=> 'Este número ya esta en uso.',
+            'phone.min'=> 'Debes ingresar un número valido de 10 dígitos.',
+            'password.min' => 'Debes ingresar una contraseña minima de 10 dígitos.'
         ]);
 
         if($validation){

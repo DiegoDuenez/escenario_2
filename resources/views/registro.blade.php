@@ -42,7 +42,7 @@
             </div>
             @error('phone')<span class="text-danger">{{$message}}</span>@enderror
             <div class="mb-3 d-flex flex-column">
-                <label for="password" class="form-label">Contraseña:</label>
+                <label for="password" class="form-label">Contraseña (min. 10 digitos)</label>
                 <input  class="form-control" id="password" type="password" required placeholder="Contraseña" name="password">
             </div>
             @error('password')<span class="text-danger">{{$message}}</span>@enderror
