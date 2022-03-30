@@ -9,6 +9,7 @@ use Illuminate\Routing\Redirector;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Storage;
 
 class LoginController extends Controller
 {
@@ -23,6 +24,7 @@ class LoginController extends Controller
 
 
     public function index(){
+       
         return view('login');
     }
 

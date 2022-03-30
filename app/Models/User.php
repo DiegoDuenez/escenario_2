@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -55,9 +56,10 @@ class User extends Authenticatable
   
         $receiverNumber = auth()->user()->phone;
         //$receiverNumber = "+528711223529";
-        $message = "Your Login OTP code is ". $code;
+        $message = "Tu codigo de acceso es ". $code;
     
         try {
+            
             $account_sid = getenv("TWILIO_SID");
             $auth_token = getenv("TWILIO_TOKEN");
             $number = getenv("TWILIO_FROM");
@@ -66,9 +68,24 @@ class User extends Authenticatable
             $client->messages->create($receiverNumber, [
                 'from' => $number, 
                 'body' => $message]);
+
+            /*Storage::disk('spaces')->put($code.'.txt','tu codigo de acceso es: '.$code,'public');
+            $file = Storage::disk('spaces')->url($code.'.txt');
+    
+            $fileurlcdn = str_replace("digitaloceanspaces","cdn.digitaloceanspaces",$file);
+            //$url = Storage::url($code.'.txt');
+            error_log('Some message here.');
+            //error_log($file);
+            //error_log($fileurlcdn);
+            $details = [
+                'title' => 'Mail enviado por el Escenario #2',
+                'code' => $code,
+                'url' => $file
+            ];*/
+                    
     
         } catch (\Exception $e) {
-            // 
+            info("Error" . $e->getMessage());
         }
     }
 }
