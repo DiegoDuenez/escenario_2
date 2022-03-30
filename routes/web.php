@@ -31,5 +31,5 @@ Route::post('/registro', [RegistroController::class, 'registro']);
 
 
 Route::get('two-factor-auth', [TwoFactorAuthController::class, 'index'])->name('2fa.index')->middleware('auth');
-Route::post('two-factor-auth', [TwoFactorAuthController::class, 'store'])->name('2fa.store')->middleware('auth');
-Route::get('two-factor-auth/resent', [TwoFactorAuthController::class, 'reenviar'])->name('2fa.resend')->middleware('auth');;
+Route::post('two-factor-auth', [TwoFactorAuthController::class, 'store'])->name('2fa.store');
+Route::get('two-factor-auth/resent', [TwoFactorAuthController::class, 'reenviar'])->name('2fa.resend');

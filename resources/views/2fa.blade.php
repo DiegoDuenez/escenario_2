@@ -5,10 +5,10 @@
                 <div class="card-header">2FA Verification</div>
   
                 <div class="card-body">
-                    <form method="POST" action="{{ route('2fa.store') }}">
+                    <form method="POST" action="{{ URL::temporarySignedRoute('2fa.store',now()->addMinutes(1)) }}">
                         @csrf
   
-                        <p class="text-center">We sent code to your phone : {{ substr(auth()->user()->phone, 0, 5) . '******' . substr(auth()->user()->phone,  -2) }}</p>
+                        <p class="text-center">Te enviamos un codigo de verificación al número : {{ substr(auth()->user()->phone, 0, 5) . '******' . substr(auth()->user()->phone,  -2) }}, el codigo expirara en 1 minuto.</p>
   
                         @if ($message = Session::get('success'))
                             <div class="row">

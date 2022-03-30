@@ -15,6 +15,11 @@ class TwoFactorAuthController extends Controller
 
     public function store(Request $request)
     {
+        if(!$request->hasValidSignature()){
+            return redirect()
+            ->back()
+            ->with('error', 'El codigo expiro, genera un codigo nuevo.');
+        }
         $validated = $request->validate([
             'code' => 'required',
         ]);
