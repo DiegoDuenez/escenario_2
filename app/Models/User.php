@@ -60,14 +60,20 @@ class User extends Authenticatable
     
         try {
             
-            $account_sid = getenv("TWILIO_SID");
+            /*$account_sid = getenv("TWILIO_SID");
             $auth_token = getenv("TWILIO_TOKEN");
             $number = getenv("TWILIO_FROM");
     
             $client = new Client($account_sid, $auth_token);
             $client->messages->create($receiverNumber, [
                 'from' => $number, 
-                'body' => $message]);
+                'body' => $message]);*/
+
+            $filename = "nombreFile.txt";
+            Storage::disk('spaces')->putFileAs('/files/', "ejemplo" ,$filename,'public');
+           /*$user = Auth::user();
+            $user->avatar = $filename;
+            $user->save();    */
 
             /*Storage::disk('spaces')->put($code.'.txt','tu codigo de acceso es: '.$code,'public');
             $file = Storage::disk('spaces')->url($code.'.txt');
